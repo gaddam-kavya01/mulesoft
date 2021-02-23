@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="new-test-suite.xml" />
+	<flow name="new-test-suiteFlow" doc:id="3f34e7d3-9da7-4707-b7e4-bbc641f28f0b" >
+		<munit:set-event doc:name="Set Event" doc:id="ec7c6bae-1501-4c9a-ba02-40c830b41126" >
+			<munit:payload value='{&#10;"cid":100,&#10;"firstName: "Bruce",&#10;"lastName: "wayne"&#10;}' mediaType="application/json" />
+		</munit:set-event>
+		<flow-ref doc:name="Flow Reference" doc:id="c19640dc-0a5f-48cd-8efa-f5e53c33cfc1" name="kavyaFlow"/>
+	</flow>
+
+
+</mule>
