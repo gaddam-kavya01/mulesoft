@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="2c1993c0-85dc-44db-9ca0-3987986d230c" >
+		<http:listener-connection host="0.0.0.0" port="9091" />
+	</http:listener-config>
+	<flow name="kavyaFlow" doc:id="9ebfb4c1-ee84-48f9-93b6-f678bf9ca8df" >
+		<http:listener doc:name="Listener" doc:id="8d1ac5c0-a81a-47da-8287-3dc45175056b" path="/sample" config-ref="HTTP_Listener_config"/>
+		<ee:transform doc:name="output" doc:id="a9fa209a-b29d-4a04-a4cf-ee409bc9236d" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+"welcome! " ++ payload.firstName ++ payload.lastName ++ ". Your customer Id is" ++ payload.cid]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
